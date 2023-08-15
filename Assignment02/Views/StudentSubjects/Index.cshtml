@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Assignment02.Models.StudentSubject>
+
+@{
+    ViewData["Title"] = "Manage All Students Subjects";
+}
+
+<h1 class="alert alert-secondary">Manage All Students Subjects</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add Subjects To Student</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-secondary">
+            <th>
+                @Html.DisplayNameFor(model => model.Student.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.SSN)
+            </th>
+            <th>
+                Subject Name
+            </th>
+            <th>
+                Subject Code
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-primary">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.SSN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject.Code)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

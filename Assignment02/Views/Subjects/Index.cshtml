@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Assignment02.Models.Subject>
+
+@{
+    ViewData["Title"] = "All Subjects";
+}
+
+<h1 class="alert alert-secondary">All Subjects [@Model.Count()]</h1>
+
+<p>
+    <a class="btn btn-primary"  asp-action="Create">Create New</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-secondary">
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FullMark)
+            </th>
+            <th scope="col">
+                Students Count
+            </th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="table-primary">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullMark)
+            </td>
+            <td>
+                @item.StudentsSubjects.Count()
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" class="btn btn-info" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
